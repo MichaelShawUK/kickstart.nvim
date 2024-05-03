@@ -89,7 +89,7 @@ local nvim_help = vim.api.nvim_create_augroup('nvim_help', { clear = true })
 vim.api.nvim_create_autocmd('BufRead', {
   group = nvim_help,
   pattern = '*.txt',
-  command = "if &buftype == 'help' | wincmd L  | vertical resize 80 | endif",
+  command = "if &buftype == 'help' | wincmd L  | vertical resize 82 | endif",
 })
 
 -- Set <space> as the leader key
@@ -595,6 +595,13 @@ require('lazy').setup({
             },
           },
         },
+        -- emmet_language_server = {
+        --   filetypes = {
+        --     'html',
+        --     'javascriptreact',
+        --     'typescriptreact',
+        --   },
+        -- },
       }
 
       -- Ensure the servers and tools above are installed
@@ -612,6 +619,9 @@ require('lazy').setup({
         'stylua', -- Used to format Lua code
         'prettierd',
         'eslint_d',
+        'tsserver',
+        'cssls',
+        'emmet-language-server',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
@@ -742,7 +752,7 @@ require('lazy').setup({
           -- Accept ([y]es) the completion.
           --  This will auto-import if your LSP supports it.
           --  This will expand snippets if the LSP sent a snippet.
-          ['<C-y>'] = cmp.mapping.confirm { select = true },
+          ['<C-Space>'] = cmp.mapping.confirm { select = true },
 
           -- If you prefer more traditional completion keymaps,
           -- you can uncomment the following lines
@@ -753,7 +763,7 @@ require('lazy').setup({
           -- Manually trigger a completion from nvim-cmp.
           --  Generally you don't need this, because nvim-cmp will display
           --  completions whenever it has completion options available.
-          ['<C-Space>'] = cmp.mapping.complete {},
+          ['<C-y>'] = cmp.mapping.complete {},
 
           -- Think of <c-l> as moving to the right of your snippet expansion.
           --  So if you have a snippet that's like:
